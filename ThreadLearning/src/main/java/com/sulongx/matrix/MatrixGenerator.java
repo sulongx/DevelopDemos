@@ -1,4 +1,4 @@
-package com.sulongx.matrix.demo01;
+package com.sulongx.matrix;
 
 import java.util.Random;
 
