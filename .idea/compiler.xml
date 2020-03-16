@@ -8,13 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ExportFile" />
         <module name="ThreadLearning" />
+        <module name="sso_demo" />
         <module name="GRpcDemo" />
+        <module name="Algorithm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ExportFile" target="8" />
-      <module name="GRpcDemo" target="8" />
-      <module name="ThreadLearning" target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="Algorithm" target="1.5" />
+      <module name="ExportFile" target="1.5" />
+      <module name="GRpcDemo" target="1.5" />
+      <module name="sso_demo" target="1.5" />
+      <module name="ThreadLearning" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
