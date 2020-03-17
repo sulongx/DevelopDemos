@@ -16,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="Algorithm" target="1.5" />
       <module name="AttachmentSystem" target="1.5" />
       <module name="ExportFile" target="1.5" />
       <module name="GRpcDemo" target="1.5" />

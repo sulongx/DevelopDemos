@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm/Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/AttachmentSystem/AttachmentSystem.iml" filepath="$PROJECT_DIR$/AttachmentSystem/AttachmentSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DevelopDemos.iml" filepath="$PROJECT_DIR$/.idea/DevelopDemos.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExportFile/ExportFile.iml" filepath="$PROJECT_DIR$/ExportFile/ExportFile.iml" />

@@ -9,6 +9,31 @@ package com.sulongx.algorithm.primary;
  */
 public class TwentyOneProblem {
 
+    private static int i = 24;
+
+    private static long count = 0;
+
+
+    public static void a(long n,int index){
+        if(index == i){
+            System.out.println("到达回合目标点：");
+            count += (n * 2) -1;
+            System.out.println(count);
+            return;
+        }
+        for(long i = 1;i <= n*2;i ++){
+            if(i != n){
+                System.out.println("第"+index+"回合,上一回合的硬币结果:" + i);
+                a(i,index + 1);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        a(10,1);
+        System.out.println(count);
+    }
+
     /**
      *
      * @param coins 硬币数
@@ -18,13 +43,6 @@ public class TwentyOneProblem {
     public static int v1(int coins,int rounds){
         int coinCounts = coins * (1<<rounds);
         return coinCounts/2 + 1;
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(1<<4);
-        int i = v1(10, 24-1);
-        System.out.println(i);
     }
 
 }
