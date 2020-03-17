@@ -9,7 +9,6 @@ import java.io.IOException;
  * @version 1.0
  */
 public interface ExportAPI {
-
     /**
      * 根据模板生成新的文件
      * @param templateName 模板文件名

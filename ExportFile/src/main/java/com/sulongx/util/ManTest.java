@@ -7,6 +7,5 @@ package com.sulongx.util;
 public class ManTest {
 
     public static void main(String[] args) {
-
     }
 }
