@@ -9,7 +9,7 @@ package com.sulongx.algorithm.primary;
  */
 public class TwentyOneProblem {
 
-    private static int i = 24;
+    private static int i = 1;
 
     private static long count = 0;
 
