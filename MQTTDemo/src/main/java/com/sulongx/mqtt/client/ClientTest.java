@@ -1,13 +1,19 @@
 package com.sulongx.mqtt.client;
 
+
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * EMQX连接客户端测试
  * @author Sulongx
  */
 public class ClientTest {
+
     public static void main(String[] args){
         String topic        = "$admin/projectTest01/general/aaa";
         String content      = "test message";
@@ -25,6 +31,13 @@ public class ClientTest {
             connOpts.setPassword("423df21cb9864886".toCharArray());
             sampleClient.connect(connOpts);
             System.out.println("Connected");
+
+            ExecutorService executorService = Executors.newFixedThreadPool(10);
+            executorService.execute(new Runnable() {
+                public void run() {
+
+                }
+            });
 
 
 
