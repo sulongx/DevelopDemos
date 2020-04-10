@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: mqtt-server
+server:
+  port: 8088
+
+
+
+
+# mqtt连接参数
+
+mqtt:
+  broker: tcp://5m.gaojulong.com:1883

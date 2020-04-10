@@ -1,15 +1,36 @@
-0,29,82,46,68,52,72,42,51,55,29,74,23,72,46
-29,0,55,46,42,43,43,23,23,31,41,51,11,52,21
-82,55,0,68,46,55,23,43,41,29,79,21,64,31,51
-46,46,68,0,82,15,72,31,62,42,21,51,51,43,64
-68,42,46,82,0,74,23,52,21,46,82,58,46,65,23
-52,43,55,15,74,0,61,23,55,31,33,37,51,29,59
-72,43,23,72,23,61,0,42,23,31,77,37,51,46,33
-42,23,43,31,52,23,42,0,33,15,37,33,33,31,37
-51,23,41,62,21,55,23,33,0,29,62,46,29,51,11
-55,31,29,42,46,31,31,15,29,0,51,21,41,23,37
-29,41,79,21,82,33,77,37,62,51,0,65,42,59,61
-74,51,21,51,58,37,37,33,46,21,65,0,61,11,55
-23,11,64,51,46,51,51,33,29,41,42,61,0,62,23
-72,52,31,43,65,29,46,31,51,23,59,11,62,0,59
-46,21,51,64,23,59,33,37,11,37,61,55,23,59,0
+This repository is being maintained by book author Max Lapan. I'm trying to keep all the examples working under the latest versions of PyTorch and gym, which is not always simple, as software evolves. For example, OpenAI Universe, extensively being used in chapter 13, was discontinued by OpenAI. List of current requirements is present in requirements.txt file.
+
+Examples require python 3.6.
+
+And, of course, bugs in examples are inevitable, so, exact code might differ from code present in the book text.
+
+Too keep track of major code change, I'm using tags and branches, for example:
+
+tag 01_release marks code state right after book publication in June 2018
+branch master has the latest version of code updated for the latest stable PyTorch 0.4.1
+branch torch_1.0 keeps the activity of porting examples to PyTorch 1.0 (not yet released)
+Chapters' examples
+Chapter 2: OpenAI Gym
+Chapter 3: Deep Learning with PyTorch
+Chapter 4: Cross Entropy method
+Chapter 5: Tabular learning and the Bellman equation
+Chapter 6: Deep Q-Networks
+Chapter 7: DQN extensions
+Chapter 8: Stocks trading using RL
+Chapter 9: Policy Gradients: an alternative
+Chapter 10: Actor-Critic method
+Chapter 11: Asynchronous Advantage Actor-Critic
+Chapter 12: Chatbots traning with RL
+Chapter 13: Web navigation
+Chapter 14: Continuous action space
+Chapter 15: Trust regions: TRPO, PPO and ACKTR
+Chapter 16: Black-box optimisation in RL
+Chapter 17: Beyond model-free: imagination
+Chapter 18: AlphaGo Zero
+Deep Reinforcement Learning Hands-On
+This is the code repository for Deep Reinforcement Learning Hands-On, published by Packt. It contains all the supporting project files necessary to work through the book from start to finish.
+
+About the Book
+Recent developments in reinforcement learning (RL), combined with deep learning (DL), have seen unprecedented progress made towards training agents to solve complex problems in a human-like way. Google’s use of algorithms to play and defeat the well-known Atari arcade games has propelled the field to prominence, and researchers are generating new ideas at a rapid pace.
+
+Deep Reinforcement Learning Hands-On is a comprehensive guide to the very latest DL tools and their limitations. You will evaluate methods including Cross-entropy and policy gradients, before applying them to real-world environments. Take on both the Atari set of virtual games and family favorites such as Connect4. The book provides an introduction to the basics of RL, giving you the know-how to code intelligent learning agents to take on a formidable array of practical tasks. Discover how to implement Q-learning on ‘grid world’ environments, teach your agent to buy and trade stocks, and find out how natural language models are driving the boom in chatbots.

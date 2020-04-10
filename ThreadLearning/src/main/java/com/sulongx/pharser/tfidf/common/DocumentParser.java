@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.text.Normalizer;
 
 /**
@@ -39,9 +40,9 @@ public class DocumentParser {
 
     private static void parseLine(String line,Document document){
         line = Normalizer.normalize(line, Normalizer.Form.NFKD);
-        line = line.replaceAll("[^\\p{ASCII}]","");
-        line = line.toLowerCase();
-        for(String word : line.split("\\w+")){
+        //line = line.replaceAll("[^\\p{ASCII}]","");
+        //line = line.toLowerCase();
+        for(String word : line.split(" ")){
             document.addWord(word);
         }
     }
