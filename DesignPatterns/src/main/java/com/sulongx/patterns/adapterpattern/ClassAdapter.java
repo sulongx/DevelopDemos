@@ -7,7 +7,7 @@ package com.sulongx.patterns.adapterpattern;
  * @author xiongsulong
  * @create 2020-10-28 19:06
  */
-public class ClassAdapter extends Adaptee implements Target {
+public class ClassAdapter extends Adapter implements Target {
 
     @Override
     public void request() {

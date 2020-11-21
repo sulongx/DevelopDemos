@@ -1,4 +1,4 @@
-package com.sulongx.patterns.observerpatterns;
+package com.sulongx.patterns.observerpattern;
 
 import java.util.ArrayList;
 import java.util.List;

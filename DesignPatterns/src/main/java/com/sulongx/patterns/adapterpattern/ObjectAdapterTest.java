@@ -10,8 +10,8 @@ package com.sulongx.patterns.adapterpattern;
 public class ObjectAdapterTest {
     public static void main(String[] args) {
         System.out.println("对象适配器测试:\n");
-        Adaptee adaptee = new Adaptee();
-        Target target = new ObjectAdapter(adaptee);
+        Adapter adapter = new Adapter();
+        Target target = new ObjectAdapter(adapter);
         target.request();
     }
 }

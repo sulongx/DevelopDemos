@@ -9,14 +9,14 @@ package com.sulongx.patterns.adapterpattern;
  */
 public class ObjectAdapter implements Target{
 
-    private Adaptee adaptee;
+    private Adapter adapter;
 
-    public ObjectAdapter(Adaptee adaptee){
-        this.adaptee = adaptee;
+    public ObjectAdapter(Adapter adapter){
+        this.adapter = adapter;
     }
 
     @Override
     public void request() {
-        adaptee.specificRequest();
+        adapter.specificRequest();
     }
 }

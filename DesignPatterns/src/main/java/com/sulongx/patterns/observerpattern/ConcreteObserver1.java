@@ -1,4 +1,4 @@
-package com.sulongx.patterns.observerpatterns;
+package com.sulongx.patterns.observerpattern;
 
 /**
  * 描述:
