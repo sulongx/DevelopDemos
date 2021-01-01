@@ -97,7 +97,7 @@ public class MultiListDataEn<T, R> {
         }
     }
 
-    private static String captureName(String str) {
+    private String captureName(String str) {
         char[] cs = str.toCharArray();
         cs[0] -= 32;
         return String.valueOf(cs);
