@@ -10,6 +10,7 @@ import org.apache.lucene.util.CharsRef;
 import java.io.IOException;
 
 /**
+ * 自定义分词器
  * @author sulongx
  * @version 1.0
  * @description
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class Demo3 {
 
     public static void main(String[] args) throws IOException {
+
         //定义同义词
         SynonymMap.Builder builder = new SynonymMap.Builder();
         builder.add(new CharsRef("aeroplane"), new CharsRef("plane"), true);

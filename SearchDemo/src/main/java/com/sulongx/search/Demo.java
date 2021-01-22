@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 
 
 /**
+ * 空白分词器查询
  * @author sulongx
  * @version 1.0
  * @description
@@ -27,7 +28,7 @@ public class Demo {
 
     public static void main(String[] args) throws Exception {
         //倒排索引文件
-        Path path = Paths.get("D:\\workspace\\javaapplication\\DevelopDemos\\SearchDemo\\target\\classes\\lucene");
+        Path path = Paths.get("D:\\workspace\\javaapplication\\DevelopDemos\\SearchDemo\\src\\main\\resources\\lucene");
 
         Directory directory = FSDirectory.open(path);
 
@@ -40,7 +41,7 @@ public class Demo {
         //使用WhitespaceAnalyzer（空白分析器）为标题字段创建查询解析器
         QueryParser parser = new QueryParser("title", new WhitespaceAnalyzer());
         //通过用户输入内容获取一个Lucene Query
-        Query query = parser.parse("DL");
+        Query query = parser.parse("Relevant");
 
         //在IndexSearch上执行查询，并返回前10个文档
         IndexSearcher searcher = new IndexSearcher(reader);

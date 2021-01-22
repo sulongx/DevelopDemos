@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 创建文档
  * @author sulongx
  * @version 1.0
  * @description
@@ -33,7 +34,7 @@ public class Demo2 {
 
     public static void main(String[] args) throws IOException {
 
-        Path path = Paths.get("D:\\workspace\\javaapplication\\DevelopDemos\\SearchDemo\\target\\classes\\lucene");
+        Path path = Paths.get("D:\\workspace\\javaapplication\\DevelopDemos\\SearchDemo\\src\\main\\resources\\lucene");
 
         Directory directory = FSDirectory.open(path);
 
