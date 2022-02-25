@@ -1,7 +1,9 @@
 package com.sulongx.grpc.demo01;
 
+import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerServiceDefinition;
 
 import java.util.logging.Logger;
 
@@ -11,8 +13,11 @@ import java.util.logging.Logger;
  */
 public class RPCServer {
 
-    static class GreeterImpl {
-
+    static class GreeterImpl implements BindableService {
+        @Override
+        public ServerServiceDefinition bindService() {
+            return null;
+        }
     }
 
     //日志
@@ -32,19 +37,16 @@ public class RPCServer {
     /**
      * 启动服务
      */
-    public void start(){
+    public void start() throws Exception{
         server = ServerBuilder.forPort(SERVER_PORT)
                 .addService(new GreeterImpl())
                 .build()
                 .start();
         logger.info("GRPCServer is starting,listening on :" + SERVER_PORT);
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-            @Override
-            public void run() {
-                RPCServer.this.stop();
-                System.err.println("GRPCServer is shutdown");
-            }
-        });
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            RPCServer.this.stop();
+            System.err.println("GRPCServer is shutdown");
+        }));
     }
 
     //关闭服务
@@ -60,7 +62,7 @@ public class RPCServer {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         final RPCServer server = new RPCServer(9527);
         server.start();
         server.blockUntilShutdown();
