@@ -11,13 +11,10 @@
     <modules>
         <module>Algorithm</module>
         <module>DesignPatterns</module>
-        <module>ExportFile</module>
         <module>FunctionalProgramming</module>
-        <module>GRpcDemo</module>
         <module>JVMTest</module>
-        <module>MQTTDemo</module>
-        <module>SearchDemo</module>
         <module>ThreadLearning</module>
+        <module>project-tools</module>
     </modules>
 
     <dependencies>
