@@ -4,7 +4,6 @@ import com.sulongx.pharser.tfidf.common.Document;
 import com.sulongx.pharser.tfidf.common.DocumentParser;
 import com.sulongx.pharser.tfidf.common.KeyWord;
 import com.sulongx.pharser.tfidf.common.Word;
-import com.sun.javaws.security.Resource;
 
 import java.io.File;
 import java.util.*;
