@@ -8,7 +8,25 @@ package com.sulongx.springframework.beans.bean;
  **/
 public class UserService {
 
+    private String name;
+
+    public UserService() {
+    }
+
+    public UserService(String name) {
+        this.name = name;
+    }
+
     public void getInfo(){
-        System.out.println("获取用户信息!");
+        System.out.println("获取用户信息:");
+        System.out.println(toString());
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserService{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

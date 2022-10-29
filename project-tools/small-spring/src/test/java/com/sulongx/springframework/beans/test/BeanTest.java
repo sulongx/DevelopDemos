@@ -23,11 +23,11 @@ public class BeanTest {
         beanFactory.registryBeanDefinition("userService", beanDefinition);
 
         //第一次获取bean
-        UserService userService = (UserService) beanFactory.getBean("userService");
+        UserService userService = (UserService) beanFactory.getBean("userService", (Object) null);
         userService.getInfo();
 
         //第二次获取bean
-        userService = (UserService) beanFactory.getBean("userService");
+        userService = (UserService) beanFactory.getBean("userService", "张三");
         userService.getInfo();
     }
 }
