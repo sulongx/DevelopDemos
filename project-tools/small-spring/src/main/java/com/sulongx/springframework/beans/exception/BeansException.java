@@ -1,4 +1,4 @@
-package com.sulongx.springframework.beans;
+package com.sulongx.springframework.beans.exception;
 
 /**
  * @author sulongx

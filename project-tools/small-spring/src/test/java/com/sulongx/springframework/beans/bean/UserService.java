@@ -10,6 +10,8 @@ public class UserService {
 
     private String name;
 
+    private UserDao userDao;
+
     public UserService() {
     }
 
@@ -22,6 +24,10 @@ public class UserService {
         System.out.println(toString());
     }
 
+
+    public String getUserName(String id){
+        return userDao.queryUserName(id);
+    }
 
     @Override
     public String toString() {

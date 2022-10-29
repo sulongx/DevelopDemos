@@ -1,7 +1,6 @@
 package com.sulongx.springframework.beans.factory.support;
 
-import com.sulongx.springframework.beans.BeansException;
-import com.sulongx.springframework.beans.factory.BeanFactory;
+import com.sulongx.springframework.beans.exception.BeansException;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
 
 import java.util.HashMap;

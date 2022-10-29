@@ -1,6 +1,6 @@
 package com.sulongx.springframework.beans.factory.support;
 
-import com.sulongx.springframework.beans.BeansException;
+import com.sulongx.springframework.beans.exception.BeansException;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.NoOp;

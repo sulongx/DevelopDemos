@@ -1,6 +1,6 @@
 package com.sulongx.springframework.beans.factory;
 
-import com.sulongx.springframework.beans.BeansException;
+import com.sulongx.springframework.beans.exception.BeansException;
 
 /**
  * @author sulongx
