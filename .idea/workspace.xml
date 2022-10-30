@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="663b812f-84df-437d-8b0c-1708b2845a0d" name="Default Changelist" comment="reactor(): 项目结构调整。" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\develop_app\apache-maven-3.8.5\repository" />
+        <option name="userSettingsFile" value="E:\develop_app\apache-maven-3.8.5\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ABumozOu3KvB94FplOFQnf7kPt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project-tools/pom.xml" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\workspace\java\DevelopDemos\project-tools" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ConcurrentMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sulongx.numericalsummarization.concurrent.main.ConcurrentMain" />
+      <module name="ThreadLearning" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sulongx.numericalsummarization.concurrent.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ConcurrentMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="663b812f-84df-437d-8b0c-1708b2845a0d" name="Default Changelist" comment="" />
+      <created>1654495460274</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654495460274</updated>
+      <workItem from="1654495461946" duration="219000" />
+      <workItem from="1655295281111" duration="12000" />
+      <workItem from="1666872330595" duration="1262000" />
+      <workItem from="1666873611316" duration="4277000" />
+      <workItem from="1667032951401" duration="222000" />
+    </task>
+    <task id="LOCAL-00001" summary="add():间接性提交。">
+      <created>1666872476089</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666872476089</updated>
+    </task>
+    <task id="LOCAL-00002" summary="reactor(): 项目结构调整。">
+      <created>1666874298502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666874298502</updated>
+    </task>
+    <task id="LOCAL-00003" summary="reactor(): 项目结构调整。">
+      <created>1666876378909</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666876378909</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add():间接性提交。" />
+    <MESSAGE value="reactor(): 项目结构调整。" />
+    <option name="LAST_COMMIT_MESSAGE" value="reactor(): 项目结构调整。" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1317" y="317" key="#Project_Structure" timestamp="1666875091163">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1317" y="317" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1666875091163" />
+    <state x="1457" y="421" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1666874044583">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1457" y="421" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1666874044583" />
+    <state x="1617" y="441" key="FileChooserDialogImpl" timestamp="1667033168491">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1617" y="441" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1667033168491" />
+    <state x="1367" y="398" key="Maven.ArtifactSearchDialog" timestamp="1666879426597">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1367" y="398" key="Maven.ArtifactSearchDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1666879426597" />
+    <state x="496" y="165" key="MergeDialog" timestamp="1667033013679">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="496" y="165" key="MergeDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1667033013679" />
+    <state x="1477" y="446" width="737" height="593" key="NewModule_or_Project.wizard" timestamp="1666873363617">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1477" y="446" width="737" height="593" key="NewModule_or_Project.wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1666873363617" />
+    <state x="1338" y="387" key="SettingsEditor" timestamp="1666875959940">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1338" y="387" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1666875959940" />
+    <state x="1429" y="476" key="Vcs.Push.Dialog.v2" timestamp="1666876452524">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1429" y="476" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1666876452524" />
+    <state x="1631" y="656" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1667032994163">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1631" y="656" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1667032994163" />
+    <state x="1212" y="403" key="new project wizard" timestamp="1666875204766">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1212" y="403" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1666875204766" />
+  </component>
+</project>
