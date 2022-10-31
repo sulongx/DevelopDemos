@@ -6,7 +6,12 @@
 
     <bean id="userService" class="com.sulongx.springframework.beans.bean.UserService">
         <property name="name" value="测试服务"/>
+        <property name="msg" value="测试内容1"/>
         <property name="userDao" ref="userDao"/>
     </bean>
+
+    <bean class="com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor"/>
+
+    <bean class="com.sulongx.springframework.beans.config.MyBeanPostProcessor"/>
 
 </beans>

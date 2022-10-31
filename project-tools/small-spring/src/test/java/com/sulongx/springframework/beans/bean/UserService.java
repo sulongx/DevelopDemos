@@ -10,14 +10,14 @@ public class UserService {
 
     private String name;
 
+    private String msg;
+
     private UserDao userDao;
 
     public UserService() {
     }
 
-    public UserService(String name) {
-        this.name = name;
-    }
+
 
     public void getInfo(){
         System.out.println("获取用户信息:");
@@ -33,6 +33,23 @@ public class UserService {
     public String toString() {
         return "UserService{" +
                 "name='" + name + '\'' +
+                ", msg='" + msg + '\'' +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

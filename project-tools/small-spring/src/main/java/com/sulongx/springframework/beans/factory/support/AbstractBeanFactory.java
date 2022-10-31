@@ -1,8 +1,12 @@
 package com.sulongx.springframework.beans.factory.support;
 
 import com.sulongx.springframework.beans.exception.BeansException;
-import com.sulongx.springframework.beans.factory.BeanFactory;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
+import com.sulongx.springframework.beans.factory.config.BeanPostProcessor;
+import com.sulongx.springframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author sulongx
@@ -10,8 +14,9 @@ import com.sulongx.springframework.beans.factory.config.BeanDefinition;
  * @description 抽象Bean工厂-模板方法
  * @date 2022/10/28 16:49
  **/
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     @Override
     public Object getBean(String beanName) {
@@ -51,4 +56,15 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException;
 
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
+
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        this.beanPostProcessors.remove(beanPostProcessor);
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return beanPostProcessors;
+    }
 }

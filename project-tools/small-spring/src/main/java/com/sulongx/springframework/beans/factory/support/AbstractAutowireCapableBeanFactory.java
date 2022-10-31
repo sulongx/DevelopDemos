@@ -4,10 +4,13 @@ import cn.hutool.core.bean.BeanUtil;
 import com.sulongx.springframework.beans.exception.BeansException;
 import com.sulongx.springframework.beans.factory.PropertyValue;
 import com.sulongx.springframework.beans.factory.PropertyValues;
+import com.sulongx.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
+import com.sulongx.springframework.beans.factory.config.BeanPostProcessor;
 import com.sulongx.springframework.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author sulongx
@@ -15,7 +18,7 @@ import java.lang.reflect.Constructor;
  * @description 实例化Bean
  * @date 2022/10/28 16:47
  **/
-public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
+public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
 
 
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
@@ -24,9 +27,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException {
         Object bean;
         try {
-            bean = beanDefinition.getBeanClass().newInstance();
+            bean = beanDefinition.getBeanClass().getDeclaredConstructor().newInstance();
+            //Bean属性填充
             applyPropertyValues(beanName, bean, beanDefinition);
-        }catch (InstantiationException | IllegalAccessException e){
+            //执行Bean的初始化方法和BeanPostProcessor的前置和后置处理方法
+            bean = initializeBean(beanName, bean, beanDefinition);
+        }catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e){
             throw new BeansException("Instantiation of bean failed", e);
         }
         addSingleton(beanName, bean);
@@ -39,12 +45,55 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean;
         try {
             bean = createBeanInstance(beanDefinition, beanName, args);
+            //Bean属性填充
             applyPropertyValues(beanName, bean, beanDefinition);
+            //执行Bean的初始化方法和BeanPostProcessor的前置和后置处理方法
+            bean = initializeBean(beanName, bean, beanDefinition);
         }catch (Exception e){
             throw new BeansException("Instantiation of bean failed", e);
         }
         addSingleton(beanName, bean);
         return bean;
+    }
+
+    private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition){
+        //执行BeanPostProcessor Before处理
+        Object wrapperBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
+        invokeInitMethods(beanName, wrapperBean, beanDefinition);
+        //执行BeanPostProcessor After处理
+        wrapperBean = applyBeanPostProcessorsAfterInitialization(wrapperBean, beanName);
+        return wrapperBean;
+    }
+
+
+    private void invokeInitMethods(String beanName, Object wrapperBean, BeanDefinition beanDefinition){
+
+    }
+
+    @Override
+    public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
+        Object result = existingBean;
+        for(BeanPostProcessor beanPostProcessor : getBeanPostProcessors()){
+            Object current = beanPostProcessor.postProcessorBeforeInitialization(existingBean, beanName);
+            if(current == null){
+                continue;
+            }
+            result = current;
+        }
+        return result;
+    }
+
+    @Override
+    public Object applyBeanPostProcessorsAfterInitialization(Object existingBean, String beanName) throws BeansException {
+        Object result = existingBean;
+        for(BeanPostProcessor beanPostProcessor : getBeanPostProcessors()){
+            Object current = beanPostProcessor.postProcessorAfterInitialization(existingBean, beanName);
+            if(current == null){
+                continue;
+            }
+            result = current;
+        }
+        return result;
     }
 
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args){
