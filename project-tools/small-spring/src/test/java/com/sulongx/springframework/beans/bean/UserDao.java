@@ -23,4 +23,13 @@ public class UserDao {
     public String queryUserName(String id){
         return data.get(id);
     }
+
+
+    public void initMethod(){
+        System.out.println(this.getClass().getName() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ":执行初始化方法...[配置文件方式]");
+    }
+
+    public void destroyMethod(){
+        System.out.println(this.getClass().getName() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ":执行销毁方法...[配置文件方式]");
+    }
 }
