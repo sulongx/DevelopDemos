@@ -56,4 +56,16 @@ public class ApplicationContextTest {
         String userName = userService.getUserName("1");
         System.out.println(userName);
     }
+
+
+    @Test
+    public void test_aware(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        //注册钩子方法
+        applicationContext.registerShutdownHook();
+
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        System.out.println("applicationContext: " + userService.getApplicationContext());
+        System.out.println("beanFactory: " + userService.getBeanFactory());
+    }
 }

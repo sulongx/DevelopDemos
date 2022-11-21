@@ -1,7 +1,9 @@
 package com.sulongx.springframework.beans.bean;
 
-import com.sulongx.springframework.beans.factory.DisposableBean;
-import com.sulongx.springframework.beans.factory.InitializingBean;
+import com.sulongx.springframework.beans.exception.BeansException;
+import com.sulongx.springframework.beans.factory.*;
+import com.sulongx.springframework.context.ApplicationContext;
+import com.sulongx.springframework.context.ApplicationContextAware;
 
 /**
  * @author sulongx
@@ -9,7 +11,11 @@ import com.sulongx.springframework.beans.factory.InitializingBean;
  * @description 用户服务Bean类
  * @date 2022/10/28 17:54
  **/
-public class UserService implements InitializingBean, DisposableBean {
+public class UserService implements InitializingBean, DisposableBean, ApplicationContextAware, BeanFactoryAware, BeanNameAware, BeanClassLoaderAware {
+
+    public ApplicationContext applicationContext;
+
+    public BeanFactory beanFactory;
 
     private String name;
 
@@ -41,6 +47,35 @@ public class UserService implements InitializingBean, DisposableBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(this.getClass().getName() + "." + Thread.currentThread().getStackTrace()[1].getMethodName()  + ":执行初始化后方法...[实现接口方式]");
+    }
+
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        this.applicationContext = context;
+    }
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        System.out.println("classLoader: " + classLoader);
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("beanName: " + name);
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public BeanFactory getBeanFactory() {
+        return beanFactory;
     }
 
     @Override

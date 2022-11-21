@@ -3,10 +3,7 @@ package com.sulongx.springframework.beans.factory.support;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.sulongx.springframework.beans.exception.BeansException;
-import com.sulongx.springframework.beans.factory.DisposableBean;
-import com.sulongx.springframework.beans.factory.InitializingBean;
-import com.sulongx.springframework.beans.factory.PropertyValue;
-import com.sulongx.springframework.beans.factory.PropertyValues;
+import com.sulongx.springframework.beans.factory.*;
 import com.sulongx.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
 import com.sulongx.springframework.beans.factory.config.BeanPostProcessor;
@@ -76,6 +73,17 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
     private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition){
+        if(bean instanceof Aware){
+            if(bean instanceof BeanFactoryAware){
+                ((BeanFactoryAware) bean).setBeanFactory(this);
+            }
+            if(bean instanceof BeanClassLoaderAware){
+                ((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());
+            }
+            if(bean instanceof BeanNameAware){
+                ((BeanNameAware) bean).setBeanName(beanName);
+            }
+        }
         //执行BeanPostProcessor Before处理
         Object wrapperBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
         try {
