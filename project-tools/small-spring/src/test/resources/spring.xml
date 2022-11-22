@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
 
-    <bean id="userDao" class="com.sulongx.springframework.beans.bean.UserDao" init-method="initMethod" destroy-method="destroyMethod" />
+<!--    <bean id="userDao" class="com.sulongx.springframework.beans.bean.UserDao" init-method="initMethod" destroy-method="destroyMethod" />-->
 
 
-    <bean id="userService" class="com.sulongx.springframework.beans.bean.UserService">
-        <property name="name" value="测试服务"/>
-        <property name="msg" value="测试内容1"/>
-        <property name="userDao" ref="userDao"/>
+<!--    <bean id="userService" class="com.sulongx.springframework.beans.bean.UserService">-->
+<!--        <property name="name" value="测试服务"/>-->
+<!--        <property name="msg" value="测试内容1"/>-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor"/>-->
+
+<!--    <bean class="com.sulongx.springframework.beans.config.MyBeanPostProcessor"/>-->
+
+    <bean id="userServiceV10" class="com.sulongx.springframework.beans.bean.UserServiceV10" scope="prototype">
+        <property name="iUserDao" ref="proxyUserDao"/>
     </bean>
 
-    <bean class="com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor"/>
+    <bean id="proxyUserDao" class="com.sulongx.springframework.beans.bean.ProxyBeanFactory"/>
 
-    <bean class="com.sulongx.springframework.beans.config.MyBeanPostProcessor"/>
 
 </beans>

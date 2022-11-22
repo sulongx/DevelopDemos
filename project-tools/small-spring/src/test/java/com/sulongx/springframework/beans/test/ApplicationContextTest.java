@@ -1,6 +1,7 @@
 package com.sulongx.springframework.beans.test;
 
 import com.sulongx.springframework.beans.bean.UserService;
+import com.sulongx.springframework.beans.bean.UserServiceV10;
 import com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor;
 import com.sulongx.springframework.beans.config.MyBeanPostProcessor;
 import com.sulongx.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -67,5 +68,36 @@ public class ApplicationContextTest {
         UserService userService = applicationContext.getBean("userService", UserService.class);
         System.out.println("applicationContext: " + userService.getApplicationContext());
         System.out.println("beanFactory: " + userService.getBeanFactory());
+    }
+
+
+    @Test
+    public void test_prototype(){
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        applicationContext.registerShutdownHook();
+
+        // 2. 获取Bean对象调用方法
+        UserServiceV10 userServiceV10_1 = applicationContext.getBean("userServiceV10", UserServiceV10.class);
+        UserServiceV10 userServiceV10_2 = applicationContext.getBean("userServiceV10", UserServiceV10.class);
+
+        // 3. 配置 scope="prototype/singleton"
+        System.out.println(userServiceV10_1);
+        System.out.println(userServiceV10_2);
+
+        // 4. 打印十六进制哈希
+        System.out.println(userServiceV10_1 + " 十六进制哈希：" + Integer.toHexString(userServiceV10_1.hashCode()));
+        //System.out.println(ClassLayout.parseInstance(userServiceV10_1).toPrintable());
+    }
+
+
+    @Test
+    public void test_factory_bean(){
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        applicationContext.registerShutdownHook();
+
+        UserServiceV10 userServiceV10 = applicationContext.getBean("userServiceV10", UserServiceV10.class);
+        System.out.println(userServiceV10.queryUserNameById(1L));
     }
 }

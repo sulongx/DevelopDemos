@@ -24,26 +24,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
 
-    @Override
-    protected Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException {
-        Object bean;
-        try {
-            bean = beanDefinition.getBeanClass().getDeclaredConstructor().newInstance();
-            //Bean属性填充
-            applyPropertyValues(beanName, bean, beanDefinition);
-            //执行Bean的初始化方法和BeanPostProcessor的前置和后置处理方法
-            bean = initializeBean(beanName, bean, beanDefinition);
-        }catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e){
-            throw new BeansException("Instantiation of bean failed", e);
-        }
-
-        //注册实现了 DisposableBean 接口的 Bean 对象
-        registerDisposableBeanIfNecessary(beanName, bean, beanDefinition);
-
-        addSingleton(beanName, bean);
-        return bean;
-    }
-
 
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
@@ -61,12 +41,18 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         //注册实现了 DisposableBean 接口的 Bean 对象
         registerDisposableBeanIfNecessary(beanName, bean, beanDefinition);
 
-        addSingleton(beanName, bean);
+        if(beanDefinition.isSingleton()){
+            addSingleton(beanName, bean);
+        }
+
         return bean;
     }
 
 
     private void registerDisposableBeanIfNecessary(String beanName, Object bean, BeanDefinition beanDefinition){
+        if(!beanDefinition.isSingleton()){
+            return;
+        }
         if(bean instanceof DisposableBean || StrUtil.isNotEmpty(beanDefinition.getDestroyMethodName())){
             registerDisposableBean(beanName, new DisposableBeanAdapter(bean, beanName, beanDefinition));
         }
