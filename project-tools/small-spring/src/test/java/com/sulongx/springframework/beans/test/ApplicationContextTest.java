@@ -4,6 +4,7 @@ import com.sulongx.springframework.beans.bean.UserService;
 import com.sulongx.springframework.beans.bean.UserServiceV10;
 import com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor;
 import com.sulongx.springframework.beans.config.MyBeanPostProcessor;
+import com.sulongx.springframework.beans.event.CustomEvent;
 import com.sulongx.springframework.beans.factory.support.DefaultListableBeanFactory;
 import com.sulongx.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import com.sulongx.springframework.context.support.ClassPathXmlApplicationContext;
@@ -99,5 +100,13 @@ public class ApplicationContextTest {
 
         UserServiceV10 userServiceV10 = applicationContext.getBean("userServiceV10", UserServiceV10.class);
         System.out.println(userServiceV10.queryUserNameById(1L));
+    }
+
+    @Test
+    public void test_event(){
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        applicationContext.publishEvent(new CustomEvent(applicationContext, 110L, "自定义事件通知！"));
+        applicationContext.registerShutdownHook();
     }
 }

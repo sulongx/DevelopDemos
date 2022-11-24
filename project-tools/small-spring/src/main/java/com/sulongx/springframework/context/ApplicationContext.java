@@ -1,6 +1,8 @@
 package com.sulongx.springframework.context;
 
+import com.sulongx.springframework.beans.factory.HierarchicalBeanFactory;
 import com.sulongx.springframework.beans.factory.ListableBeanFactory;
+import com.sulongx.springframework.core.io.ResourceLoader;
 
 /**
  * @author sulongx
@@ -8,5 +10,5 @@ import com.sulongx.springframework.beans.factory.ListableBeanFactory;
  * @description
  * @date 2022/10/31 14:47
  **/
-public interface ApplicationContext extends ListableBeanFactory {
+public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader, ApplicationEventPublisher {
 }

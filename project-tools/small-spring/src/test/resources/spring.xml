@@ -21,4 +21,8 @@
     <bean id="proxyUserDao" class="com.sulongx.springframework.beans.bean.ProxyBeanFactory"/>
 
 
+    <bean class="com.sulongx.springframework.beans.event.ContextClosedEventListener"/>
+    <bean class="com.sulongx.springframework.beans.event.ContextRefreshEventListener"/>
+
+    <bean class="com.sulongx.springframework.beans.event.CustomEventListener"/>
 </beans>

@@ -33,6 +33,11 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         this.singletonObjects.put(beanName, singletonObject);
     }
 
+    @Override
+    public void registerSingleton(String beanName, Object singletonObject) {
+        this.singletonObjects.put(beanName, singletonObject);
+    }
+
     public void registerDisposableBean(String beanName, DisposableBean bean){
         disposableBeans.put(beanName, bean);
     }
