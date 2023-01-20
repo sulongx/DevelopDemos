@@ -1,5 +1,6 @@
 package com.sulongx.springframework.beans.test;
 
+import com.sulongx.springframework.beans.bean.IUserDao;
 import com.sulongx.springframework.beans.bean.UserService;
 import com.sulongx.springframework.beans.bean.UserServiceV10;
 import com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor;
@@ -9,6 +10,8 @@ import com.sulongx.springframework.beans.factory.support.DefaultListableBeanFact
 import com.sulongx.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import com.sulongx.springframework.context.support.ClassPathXmlApplicationContext;
 import org.junit.Test;
+
+import java.lang.reflect.Proxy;
 
 /**
  * @author sulongx
@@ -108,5 +111,12 @@ public class ApplicationContextTest {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
         applicationContext.publishEvent(new CustomEvent(applicationContext, 110L, "自定义事件通知！"));
         applicationContext.registerShutdownHook();
+    }
+
+    @Test
+    public void test_proxy_class(){
+        IUserDao iUserDao = (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, (proxy, method, args) -> "代理类执行!");
+        String userName = iUserDao.queryUserName(1L);
+        System.out.println(userName);
     }
 }
