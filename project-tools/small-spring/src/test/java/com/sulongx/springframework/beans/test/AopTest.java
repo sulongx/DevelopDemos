@@ -1,17 +1,23 @@
 package com.sulongx.springframework.beans.test;
 
 import com.sulongx.springframework.aop.AdvisedSupport;
+import com.sulongx.springframework.aop.MethodMatcher;
 import com.sulongx.springframework.aop.TargetSource;
 import com.sulongx.springframework.aop.aspectj.AspectJExpressionPointcut;
 import com.sulongx.springframework.aop.framework.Cglib2AopProxy;
 import com.sulongx.springframework.aop.framework.JdkDynamicAopProxy;
+import com.sulongx.springframework.aop.framework.ReflectiveMethodInvocation;
 import com.sulongx.springframework.beans.aop.GoodsServiceInterceptor;
 import com.sulongx.springframework.beans.bean.GoodsService;
 import com.sulongx.springframework.beans.bean.IGoodsService;
 import com.sulongx.springframework.beans.bean.UserService;
+import org.aopalliance.intercept.MethodInterceptor;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.List;
 
 /**
  * @author sulongx
@@ -54,4 +60,40 @@ public class AopTest {
         //执行
         System.out.println("Cglib动态代理方式结果: " + cglibGoodsService.getGoods());
     }
+
+
+    @Test
+    public void test_proxy_method(){
+        //目标对象
+        Object targetObj = new GoodsService();
+
+        //AOP代理
+        IGoodsService iGoodsService = (IGoodsService)Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), targetObj.getClass().getInterfaces(), new InvocationHandler() {
+
+            MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* com.sulongx.springframework.beans.bean.IGoodsService.*(..))");
+
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if(methodMatcher.matches(method, targetObj.getClass())){
+
+                    MethodInterceptor methodInterceptor = invocation -> {
+                        long startTime = System.currentTimeMillis();
+                        try {
+                            return invocation.proceed();
+                        }finally {
+                            System.out.println("监控 - Begin by AOP");
+                            System.out.println("方法名称 - " + method.getName());
+                            System.out.printf("耗时%d ms", System.currentTimeMillis() - startTime);
+                        }
+                    };
+
+                    return methodInterceptor.invoke(new ReflectiveMethodInvocation(targetObj, method, args));
+                }
+                return method.invoke(targetObj, args);
+            }
+        });
+        List<String> goods = iGoodsService.getGoods();
+        System.out.println("测试结果: " + goods);
+    }
+
 }
