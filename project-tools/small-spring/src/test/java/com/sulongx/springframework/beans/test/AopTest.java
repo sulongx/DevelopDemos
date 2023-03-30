@@ -7,10 +7,13 @@ import com.sulongx.springframework.aop.aspectj.AspectJExpressionPointcut;
 import com.sulongx.springframework.aop.framework.Cglib2AopProxy;
 import com.sulongx.springframework.aop.framework.JdkDynamicAopProxy;
 import com.sulongx.springframework.aop.framework.ReflectiveMethodInvocation;
+import com.sulongx.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
 import com.sulongx.springframework.beans.aop.GoodsServiceInterceptor;
+import com.sulongx.springframework.beans.aop.bean.IUserService;
 import com.sulongx.springframework.beans.bean.GoodsService;
 import com.sulongx.springframework.beans.bean.IGoodsService;
 import com.sulongx.springframework.beans.bean.UserService;
+import com.sulongx.springframework.context.support.ClassPathXmlApplicationContext;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.junit.Test;
 
@@ -77,6 +80,7 @@ public class AopTest {
                 if(methodMatcher.matches(method, targetObj.getClass())){
 
                     MethodInterceptor methodInterceptor = invocation -> {
+
                         long startTime = System.currentTimeMillis();
                         try {
                             return invocation.proceed();
@@ -96,4 +100,10 @@ public class AopTest {
         System.out.println("测试结果: " + goods);
     }
 
+    @Test
+    public void test_aop(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        IUserService userService = applicationContext.getBean("userService", IUserService.class);
+        System.out.println("测试结果: " + userService.queryUserInfo());
+    }
 }
