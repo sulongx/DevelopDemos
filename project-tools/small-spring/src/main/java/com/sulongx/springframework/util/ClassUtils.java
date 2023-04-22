@@ -28,4 +28,11 @@ public class ClassUtils {
     public static boolean isCglibProxyName(String className){
         return (className != null && className.contains("$$"));
     }
+
+    public static boolean isThirdProxyClass(Class<?> clazz){
+        return (clazz != null && (
+                clazz.getName().contains("$ByteBuddy") ||
+                clazz.getName().contains("$$")
+        ));
+    }
 }

@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
 
 
-    private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
+    private InstantiationStrategy instantiationStrategy = new ByteBuddyInstantiationStrategy();
 
 
     @Override

@@ -55,7 +55,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
     protected boolean supportsEvent(ApplicationListener<ApplicationEvent> applicationListener, ApplicationEvent event){
         Class<? extends ApplicationListener> listenerClass = applicationListener.getClass();
 
-        Class<?> targetClazz = ClassUtils.isCglibProxyClass(listenerClass) ? listenerClass.getSuperclass() : listenerClass;
+        Class<?> targetClazz = ClassUtils.isThirdProxyClass(listenerClass) ? listenerClass.getSuperclass() : listenerClass;
         Type genericInterface = targetClazz.getGenericInterfaces()[0];
 
         Type actualTypeArgument = ((ParameterizedType) genericInterface).getActualTypeArguments()[0];
