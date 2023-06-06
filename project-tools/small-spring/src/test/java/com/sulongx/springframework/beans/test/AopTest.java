@@ -106,4 +106,17 @@ public class AopTest {
         IUserService userService = applicationContext.getBean("userService", IUserService.class);
         System.out.println("测试结果: " + userService.queryUserInfo());
     }
+    @Test
+    public void test_property(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-property.xml");
+        IGoodsService goodsService = applicationContext.getBean("goodsService", IGoodsService.class);
+        System.out.println(goodsService.getToken());
+    }
+
+    @Test
+    public void test_scan(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-scan.xml");
+        IGoodsService goodsService = applicationContext.getBean("goodsService", IGoodsService.class);
+        System.out.println(goodsService.getGoods());
+    }
 }

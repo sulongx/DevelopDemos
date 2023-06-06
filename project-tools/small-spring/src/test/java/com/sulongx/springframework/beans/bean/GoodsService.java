@@ -1,5 +1,7 @@
 package com.sulongx.springframework.beans.bean;
 
+import com.sulongx.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,10 @@ import java.util.List;
  * @details
  * @date 2022/12/11
  */
+@Component
 public class GoodsService implements IGoodsService{
+
+    private String token;
 
     private static List<String> goods = new ArrayList<>();
 
@@ -23,5 +28,15 @@ public class GoodsService implements IGoodsService{
     @Override
     public List<String> getGoods() {
         return goods;
+    }
+
+
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

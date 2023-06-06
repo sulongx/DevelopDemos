@@ -11,4 +11,6 @@ import java.util.List;
 public interface IGoodsService {
 
     List<String> getGoods();
+
+    String getToken();
 }
