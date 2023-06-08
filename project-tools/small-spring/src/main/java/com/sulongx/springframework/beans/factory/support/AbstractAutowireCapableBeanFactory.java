@@ -31,7 +31,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             if(bean != null){
                 return bean;
             }
+            //实例化Bean
             bean = createBeanInstance(beanDefinition, beanName, args);
+            //属性值注入替换
+            applyBeanPostProcessorsBeforeApplyingPropertyValues(beanName, bean, beanDefinition);
             //Bean属性填充
             applyPropertyValues(beanName, bean, beanDefinition);
             //执行Bean的初始化方法和BeanPostProcessor的前置和后置处理方法
@@ -48,6 +51,19 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
 
         return bean;
+    }
+
+    protected void applyBeanPostProcessorsBeforeApplyingPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition){
+        for (BeanPostProcessor beanPostProcessor : getBeanPostProcessors()){
+            if(beanPostProcessor instanceof InstantiationAwareBeanPostProcessor instantiationAwareBeanPostProcessor){
+                PropertyValues pvs = instantiationAwareBeanPostProcessor.postProcessPropertyValues(beanDefinition.getPropertyValues(), bean, beanName);
+                if(pvs != null){
+                    for (PropertyValue propertyValue : pvs.getPropertyValues()){
+                        beanDefinition.getPropertyValues().addPropertyValue(propertyValue);
+                    }
+                }
+            }
+        }
     }
 
     protected Object resolveBeforeInstantiation(String beanName, BeanDefinition beanDefinition){
@@ -161,8 +177,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             for(PropertyValue pv : propertyValues.getPropertyValues()){
                 String name = pv.getName();
                 Object value = pv.getValue();
-                if(value instanceof BeanReference){
-                    BeanReference beanReference = (BeanReference) value;
+                if(value instanceof BeanReference beanReference){
                     value = getBean(beanReference.getBeanName());
                 }
                 BeanUtil.setFieldValue(bean, name, value);

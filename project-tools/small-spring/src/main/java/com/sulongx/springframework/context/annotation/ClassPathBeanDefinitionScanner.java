@@ -1,11 +1,11 @@
 package com.sulongx.springframework.context.annotation;
 
 import cn.hutool.core.util.StrUtil;
+import com.sulongx.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import com.sulongx.springframework.beans.factory.config.BeanDefinition;
 import com.sulongx.springframework.beans.factory.support.BeanDefinitionRegistry;
 import com.sulongx.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
 import java.util.Set;
 
 /**
@@ -32,6 +32,8 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registryBeanDefinition((determineBeanName(beanDefinition)), beanDefinition);
             }
         }
+        //注解注入扫描器注册
+        registry.registryBeanDefinition("com.sulongx.springframework.beans.factory.annotation.internalAutowiredAnnotationBeanPostProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {

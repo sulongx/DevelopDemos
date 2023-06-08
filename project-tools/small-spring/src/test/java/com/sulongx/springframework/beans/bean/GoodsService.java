@@ -1,5 +1,7 @@
 package com.sulongx.springframework.beans.bean;
 
+import com.sulongx.springframework.beans.factory.annotation.Autowired;
+import com.sulongx.springframework.beans.factory.annotation.Value;
 import com.sulongx.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,11 +13,14 @@ import java.util.List;
  * @details
  * @date 2022/12/11
  */
-@Component
+@Component("goodsService")
 public class GoodsService implements IGoodsService{
 
+    @Value("${token}")
     private String token;
 
+    @Autowired
+    private IUserDao userDao;
     private static List<String> goods = new ArrayList<>();
 
     static {
@@ -30,7 +35,10 @@ public class GoodsService implements IGoodsService{
         return goods;
     }
 
-
+    @Override
+    public String getUsername(Long id) {
+        return userDao.queryUserName(id) + ", token=" + token;
+    }
 
     public String getToken() {
         return token;

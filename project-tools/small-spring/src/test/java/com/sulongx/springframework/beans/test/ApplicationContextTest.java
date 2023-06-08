@@ -1,5 +1,6 @@
 package com.sulongx.springframework.beans.test;
 
+import com.sulongx.springframework.beans.bean.IGoodsService;
 import com.sulongx.springframework.beans.bean.IUserDao;
 import com.sulongx.springframework.beans.bean.UserService;
 import com.sulongx.springframework.beans.bean.UserServiceV10;
@@ -118,5 +119,13 @@ public class ApplicationContextTest {
         IUserDao iUserDao = (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, (proxy, method, args) -> "代理类执行!");
         String userName = iUserDao.queryUserName(1L);
         System.out.println(userName);
+    }
+
+
+    @Test
+    public void test_scan(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-scan.xml");
+        IGoodsService goodsService = applicationContext.getBean("goodsService", IGoodsService.class);
+        System.out.println(goodsService.getUsername(1L));
     }
 }

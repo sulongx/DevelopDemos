@@ -13,4 +13,6 @@ public interface IGoodsService {
     List<String> getGoods();
 
     String getToken();
+
+    String getUsername(Long id);
 }

@@ -1,5 +1,7 @@
 package com.sulongx.springframework.beans.bean;
 
+import com.sulongx.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,8 @@ import java.util.Map;
  * @details
  * @date 2022/10/29
  */
-public class UserDao {
+@Component()
+public class UserDao implements IUserDao{
 
     private static Map<String, String> data = new HashMap<>();
 
@@ -31,5 +34,10 @@ public class UserDao {
 
     public void destroyMethod(){
         System.out.println(this.getClass().getName() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ":执行销毁方法...[配置文件方式]");
+    }
+
+    @Override
+    public String queryUserName(Long userId) {
+        return data.get(userId.toString());
     }
 }
