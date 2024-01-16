@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+
+<!--    <bean id="userDao" class="com.sulongx.springframework.beans.bean.UserDao" init-method="initMethod" destroy-method="destroyMethod" />-->
+
+
+<!--    <bean id="userService" class="com.sulongx.springframework.beans.bean.UserService">-->
+<!--        <property name="name" value="测试服务"/>-->
+<!--        <property name="msg" value="测试内容1"/>-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.sulongx.springframework.beans.config.MyBeanFactoryPostProcessor"/>-->
+
+<!--    <bean class="com.sulongx.springframework.beans.config.MyBeanPostProcessor"/>-->
+
+    <bean id="userServiceV10" class="com.sulongx.springframework.beans.bean.UserServiceV10" scope="prototype">
+        <property name="iUserDao" ref="proxyUserDao"/>
+    </bean>
+
+    <bean id="proxyUserDao" class="com.sulongx.springframework.beans.bean.ProxyBeanFactory"/>
+
+
+    <bean class="com.sulongx.springframework.beans.event.ContextClosedEventListener"/>
+    <bean class="com.sulongx.springframework.beans.event.ContextRefreshEventListener"/>
+
+    <bean class="com.sulongx.springframework.beans.event.CustomEventListener"/>
+
+
+    <!-- AOP bean 相关配置 -->
+    <bean id="userService" class="com.sulongx.springframework.beans.aop.bean.UserService"/>
+    <bean class="com.sulongx.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+    <bean id="beforeAdvice" class="com.sulongx.springframework.beans.aop.UserServiceBeforeAdvices"/>
+    <bean id="userServiceInterceptor" class="com.sulongx.springframework.beans.aop.UserServiceInterceptor"/>
+    <bean id="methodInterceptor" class="com.sulongx.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor">
+        <property name="advice" ref="beforeAdvice"/>
+    </bean>
+    <bean id="pointcutAdvisor" class="com.sulongx.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <property name="expression" value="execution(* com.sulongx.springframework.beans.aop.bean.IUserService.*(..))" />
+        <property name="advice" ref="userServiceInterceptor"/>
+    </bean>
+</beans>

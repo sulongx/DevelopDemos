@@ -16,10 +16,10 @@ public class ConcreteDecorator extends Decorator {
     @Override
     public void operation(){
         super.operation();
-        addedFuction();
+        addedFunction();
     }
 
-    private void addedFuction(){
+    private void addedFunction(){
         System.out.println("为具体构件角色添加额外的功能addedFunction()");
     }
 }
