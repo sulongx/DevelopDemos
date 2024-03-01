@@ -1,6 +1,9 @@
 package com.sulongx.tools.mybatis.test;
 
 import com.sulongx.tools.mybatis.binding.MapperProxyFactory;
+import com.sulongx.tools.mybatis.binding.MapperRegistry;
+import com.sulongx.tools.mybatis.session.SqlSession;
+import com.sulongx.tools.mybatis.session.defaults.DefaultSqlSessionFactory;
 import com.sulongx.tools.mybatis.test.dao.IUserDao;
 import org.junit.Test;
 
@@ -17,17 +20,18 @@ public class ApiTest {
 
     @Test
     public void test_MapperProxyFactory() {
-        MapperProxyFactory<IUserDao> mapperProxyFactory = new MapperProxyFactory<>(IUserDao.class);
+        //注册mapper
+        MapperRegistry mapperRegistry = new MapperRegistry();
+        mapperRegistry.addMappers("com.sulongx.tools.mybatis.test.dao");
 
-        Map<String, Object> sqlSession = new HashMap<>();
-        sqlSession.put("com.sulongx.tools.mybatis.test.dao.IUserDao.queryUserName", "模拟执行 Mapper.xml 中 SQL 语句的操作：查询用户姓名");
-        sqlSession.put("com.sulongx.tools.mybatis.test.dao.IUserDao.queryUserAge", 18);
+        //从session工厂中获取session
+        DefaultSqlSessionFactory defaultSqlSessionFactory = new DefaultSqlSessionFactory(mapperRegistry);
+        SqlSession sqlSession = defaultSqlSessionFactory.openSession();
 
-        IUserDao iUserDao = mapperProxyFactory.newInstance(sqlSession);
-        String userName = iUserDao.queryUserName("1L");
-        System.out.println(userName);
+        //获取映射器对象
+        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
 
-        Integer age = iUserDao.queryUserAge("1L");
-        System.out.println(age);
+        //测试验证
+        System.out.println(iUserDao.queryUserName("1L"));
     }
 }
